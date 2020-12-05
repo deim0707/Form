@@ -1,0 +1,17 @@
+.wrapper {
+
+  label {
+    display: flex;
+    flex-direction: column;
+
+    .required {
+      margin-left: 5px;
+    }
+
+    .warning, .warning:focus {
+      -webkit-box-shadow: 0 0 0 0.2rem red;
+      box-shadow: 0 0 0 0.2rem red;
+      border-color: red;
+    }
+  }
+}
