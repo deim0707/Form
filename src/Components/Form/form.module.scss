@@ -14,8 +14,7 @@
   font-size: 14px;
   line-height: 22px;
 
-  width: 1200px;
-  padding: 120px 256px;
+  max-width: 1200px;
 
   h1, h2 {
     font-family: SFProDisplay-Semibold, serif;
@@ -35,5 +34,28 @@
 
   .buttonSendRequest {
     margin-top: 50px;
+  }
+
+  .successPopUp {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    padding: 20px 40px;
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    padding: 45px 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    padding: 70px 256px;
   }
 }

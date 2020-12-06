@@ -1,0 +1,40 @@
+.NotificationPopUpWrapper {
+  .NotificationPopUp {
+    width: 90vw;
+    max-width: 800px;
+
+
+    .p-dialog-header, .p-dialog-content, .p-dialog-footer {
+      padding: 40px;
+    }
+
+    .p-dialog-content {
+      padding: 0 40px;
+    }
+
+    .p-dialog-content::-webkit-scrollbar {
+      width: 5px;
+      background-color: none;
+    }
+
+    .p-dialog-content::-webkit-scrollbar-thumb {
+      background-color: #BCBCBC;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+
+    .p-dialog-footer {
+      display: flex;
+      justify-content: center;
+
+      .p-button {
+        width: 60%;
+        background-color: #1890FF;
+      }
+
+      .p-button:hover {
+        background-color: #137bda !important;
+      }
+    }
+  }
+}
