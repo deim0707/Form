@@ -9,12 +9,14 @@ const NotificationPopUp = ({
                                isShow,
                                setIsShow,
                                className = "",
-                               changedState = null
+                               onConfirm = null,
+                               type = ""
                            }) => {
 
     const renderFooter = <Button label={buttonText} className="p-col-6" onClick={() => {
         setIsShow(false);
-        if (changedState) changedState(true);
+        if (onConfirm && type === "police") onConfirm(true);
+        if (onConfirm && type === "success") onConfirm();
     }} autoFocus/>
 
     return (

@@ -24,7 +24,9 @@ const Form = () => {
         isShowPolicePopUp,
         isShowSuccessPopUp,
         genders,
-        regexp
+        regexp,
+        onSubmit,
+        onCloseModalSuccess
     } = useForm();
 
     return (
@@ -72,14 +74,14 @@ const Form = () => {
             </WithTitleSection>
 
             <WithTitleSection title="Пол" isRequired>
-               <div className="p-grid">
-                   <RadioInput
-                       options={genders}
-                       value={checkedGender.value}
-                       setValue={checkedGender.setValue}
-                       className="p-col-6 p-md-4"
-                   />
-               </div>
+                <div className="p-grid">
+                    <RadioInput
+                        options={genders}
+                        value={checkedGender.value}
+                        setValue={checkedGender.setValue}
+                        className="p-col-6 p-md-4"
+                    />
+                </div>
             </WithTitleSection>
 
             <WithTitleSection title="GitHub">
@@ -100,31 +102,31 @@ const Form = () => {
                 onClickLabel={isShowPolicePopUp.setValue}
             />
 
-            <Button
-                label="Отправить"
-                onClick={() => {
-                    isShowSuccessPopUp.setValue(true);
-                    console.log("Отправили данные");
-                }}
-                className={`${style.buttonSendRequest} p-col-12 p-md-7`}
-                disabled={!isValidForm.value}
-            />
-
             <NotificationPopUp
                 title="Политика конфиденциальности"
                 buttonText="Я согласен"
                 mainTextElement={politicsElement}
-                changedState={isAgreeWithPolitics.setValue}
+                onConfirm={isAgreeWithPolitics.setValue}
                 isShow={isShowPolicePopUp.value}
                 setIsShow={isShowPolicePopUp.setValue}
+                type="policy"
             />
             <NotificationPopUp
                 title={`Спасибо, ${name.value}!`}
                 buttonText="Понятно"
                 mainTextElement={<div>Мы скоро свяжемся с вами</div>}
                 isShow={isShowSuccessPopUp.value}
+                onConfirm={onCloseModalSuccess}
                 setIsShow={isShowSuccessPopUp.setValue}
                 className={style.successPopUp}
+                type="success"
+            />
+
+            <Button
+                label="Отправить"
+                onClick={onSubmit}
+                className={`${style.buttonSendRequest} p-col-12 p-md-7`}
+                disabled={!isValidForm.value}
             />
         </article>
     )

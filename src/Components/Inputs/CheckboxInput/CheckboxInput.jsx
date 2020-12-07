@@ -7,7 +7,8 @@ const CheckboxInput = ({value, setValue, className = "", onClickLabel}) => (
 
         <div>
             <span>*</span>
-            <span>Я согласен с <button onClick={() => onClickLabel(true)}>политикой конфиденциальности</button></span>
+            <span>Я согласен с </span>
+            <span className={style.politics} onClick={() => onClickLabel(true)}>политикой конфиденциальности</span>
         </div>
     </label>
 )

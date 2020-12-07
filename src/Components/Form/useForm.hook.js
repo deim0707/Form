@@ -7,8 +7,8 @@ const useForm = () => {
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
     const [email, setEmail] = useState("")
-    const [checkedGender, setCheckedGender] = useState();
-    const [linkToGithub, setLinkToGithub] = useState();
+    const [checkedGender, setCheckedGender] = useState(null);
+    const [linkToGithub, setLinkToGithub] = useState("");
     const [isAgreeWithPolitics, setIsAgreeWithPolitics] = useState(false);
     const [isShowPolicePopUp, setIsShowPolicePopUp] = useState(false);
     const [isShowSuccessPopUp, setIsShowSuccessPopUp] = useState(false);
@@ -16,6 +16,21 @@ const useForm = () => {
     const genders = ["Мужской", "Женский"];
     const textRegExp = /^[A-Za-zА-Яа-я]+$/;
     const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    const onSubmit = () => {
+        setIsShowSuccessPopUp(true);
+    }
+
+    const onCloseModalSuccess = () => {
+        setIsValidForm(false);
+        setIsValidFields(true);
+        setName("");
+        setSurname("");
+        setEmail("");
+        setLinkToGithub("");
+        setCheckedGender(null);
+        setIsAgreeWithPolitics(false);
+    }
 
     useEffect(()=>{
         if(isValidFields && isAgreeWithPolitics && name && email && checkedGender) setIsValidForm(true)
@@ -69,6 +84,8 @@ const useForm = () => {
             email: emailRegExp,
         },
         genders,
+        onSubmit,
+        onCloseModalSuccess,
     }
 }
 
