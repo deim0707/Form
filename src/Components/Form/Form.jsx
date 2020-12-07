@@ -72,12 +72,14 @@ const Form = () => {
             </WithTitleSection>
 
             <WithTitleSection title="Пол" isRequired>
-                <RadioInput
-                    options={genders}
-                    value={checkedGender.value}
-                    setValue={checkedGender.setValue}
-                    className="p-col-6 p-md-4"
-                />
+               <div className="p-grid">
+                   <RadioInput
+                       options={genders}
+                       value={checkedGender.value}
+                       setValue={checkedGender.setValue}
+                       className="p-col-6 p-md-4"
+                   />
+               </div>
             </WithTitleSection>
 
             <WithTitleSection title="GitHub">
@@ -94,7 +96,7 @@ const Form = () => {
             <CheckboxInput
                 value={isAgreeWithPolitics.value}
                 setValue={isAgreeWithPolitics.setValue}
-                className={`${style.agreeWithPolitics} p-col-8`}
+                className={`${style.agreeWithPolitics} p-col-12 p-md-8`}
                 onClickLabel={isShowPolicePopUp.setValue}
             />
 
