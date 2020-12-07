@@ -17,15 +17,12 @@ const Input = ({
 
     useEffect(() => {
         if (value && validateRegExp && !isValidInput) setIsValidInput(validateRegExp.test(value))
-        if (!value) setIsValidInput(true);
+        if (!value && validateRegExp) setIsValidInput(true);
     }, [value])
 
     const checkValid = () => {
-        if (value.trim() && validateRegExp) {
-            const isValidNewValue = validateRegExp.test(value);
-            setIsValidInput(isValidNewValue)
-            validateRegExp.test(value)
-
+        if (value.trim() && validateRegExp && !validateRegExp.test(value)) {
+            setIsValidInput(false)
             setValue(value.trim())
         }
     }
