@@ -10,10 +10,15 @@ const Input = ({
                    inputType = "text",
                    isRequired = false,
                    className = "",
-                   validateRegExp
+                   validateRegExp,
+                   globalValidState = null,
                }) => {
 
-    const [isValidInput, setIsValidInput] = useState(true)
+    const [isValidInput, setIsValidInput] = useState(true);
+
+    useEffect(() => {
+        if (globalValidState) globalValidState.setValue(isValidInput)
+    }, [isValidInput])
 
     useEffect(() => {
         if (value && validateRegExp && !isValidInput) setIsValidInput(validateRegExp.test(value))
@@ -26,6 +31,7 @@ const Input = ({
             setValue(value.trim())
         }
     }
+
     return (
         <div className={`${style.wrapper} ${className}`}>
             <label>

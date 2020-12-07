@@ -14,6 +14,7 @@ const Form = () => {
 
     const {
         isValidForm,
+        isValidFields,
         name,
         surname,
         email,
@@ -41,6 +42,7 @@ const Form = () => {
                         isRequired
                         className="p-col-12 p-md-6"
                         validateRegExp={regexp.text}
+                        globalValidState={isValidFields}
                     />
                     <Input
                         value={surname.value}
@@ -62,6 +64,7 @@ const Form = () => {
                         inputType="email"
                         isRequired
                         className="p-col-12 p-md-6"
+                        globalValidState={isValidFields}
                         validateRegExp={regexp.email}
                     />
                     <LoadFileInput className="p-col-12 p-md-6"/>
@@ -95,7 +98,6 @@ const Form = () => {
                 onClickLabel={isShowPolicePopUp.setValue}
             />
 
-
             <Button
                 label="Отправить"
                 onClick={() => {
@@ -110,11 +112,12 @@ const Form = () => {
                 title="Политика конфиденциальности"
                 buttonText="Я согласен"
                 mainTextElement={politicsElement}
+                changedState={isAgreeWithPolitics.setValue}
                 isShow={isShowPolicePopUp.value}
                 setIsShow={isShowPolicePopUp.setValue}
             />
             <NotificationPopUp
-                title={`Спасибо, ${name}!`}
+                title={`Спасибо, ${name.value}!`}
                 buttonText="Понятно"
                 mainTextElement={<div>Мы скоро свяжемся с вами</div>}
                 isShow={isShowSuccessPopUp.value}

@@ -23,6 +23,13 @@
       opacity: 0.7;
     }
 
+    .p-dialog-header-icon:focus {
+      outline: none !important;
+      outline-offset: 0 !important;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+    }
+
     .p-dialog-footer {
       display: flex;
       justify-content: center;

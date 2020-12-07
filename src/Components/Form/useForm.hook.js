@@ -1,8 +1,9 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
 const useForm = () => {
-    const [isValidForm, setIsValidForm] = useState(true);
+    const [isValidForm, setIsValidForm] = useState(false);
+    const [isValidFields, setIsValidFields] = useState(true);
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
     const [email, setEmail] = useState("")
@@ -16,11 +17,20 @@ const useForm = () => {
     const textRegExp = /^[A-Za-zА-Яа-я]+$/;
     const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
+    useEffect(()=>{
+        if(isValidFields && isAgreeWithPolitics && name && email && checkedGender) setIsValidForm(true)
+        else setIsValidForm(false)
+    },[name,email,checkedGender,isAgreeWithPolitics, isValidFields])
+
 
     return {
         isValidForm: {
             value: isValidForm,
             setValue: setIsValidForm
+        },
+        isValidFields: {
+            value: isValidFields,
+            setValue: setIsValidFields,
         },
         name: {
             value: name,
